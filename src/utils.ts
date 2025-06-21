@@ -21,7 +21,6 @@ export const defaultSaveSessionData = async (
       throw new Error(`Failed to save session data: ${response.statusText}`);
     }
   } catch (error) {
-    console.error('Error saving session data');
     throw error;
   }
 };

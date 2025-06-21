@@ -1,7 +1,7 @@
 export interface SessionEvent {
   type: number;
   timestamp: number;
-  data: any;
+  data: Record<string, unknown>;
   delay?: number;
 }
 
@@ -11,8 +11,6 @@ export interface SessionData {
   timestamp: number;
   url?: string;
 }
-
-export type SaveSessionDataFunction = (data: SessionData) => Promise<void>;
 
 export interface SessionRecorderProps {
   autoStart?: boolean;

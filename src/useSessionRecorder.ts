@@ -30,7 +30,7 @@ export function useSessionRecorder({
   const [isRecording, setIsRecording] = useState(false);
   const sessionIdRef = useRef<string | null>(null);
   const eventsRef = useRef<SessionEvent[]>([]);
-  const recorderRef = useRef<any>(null);
+  const recorderRef = useRef<(() => void) | undefined>(undefined);
   const saveIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const sessionStartTimeRef = useRef<number>(0);
   const lastSavedIndexRef = useRef(0);
@@ -112,7 +112,7 @@ export function useSessionRecorder({
 
     if (recorderRef.current) {
       recorderRef.current();
-      recorderRef.current = null;
+      recorderRef.current = undefined;
     }
 
     if (saveIntervalRef.current) {

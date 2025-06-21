@@ -23,7 +23,6 @@ export default function RootLayout({
             apiKey={process.env.NEXT_PUBLIC_SESSION_API_KEY}
             excludePaths={['/session-replays']}
             maxSessionDuration={30 * 60 * 1000} // 30 minutes
-            maxEventsPerSession={10000}
             saveInterval={5000} // 5 seconds
           />
         </body>
