@@ -33,4 +33,6 @@ export interface SessionRecorderProps {
 export interface SessionRecorderHookReturn {
   isRecording: boolean;
   sessionId: string | null;
+  startRecording: () => void;
+  stopRecording: () => void;
 } 

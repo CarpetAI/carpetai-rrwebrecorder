@@ -9,7 +9,7 @@ A React component and hook for recording user sessions using [rrweb](https://git
 - 📱 React hook for custom implementations
 - 🛡️ Built-in safety limits to prevent runaway recordings
 - 🎯 Path-based exclusions
-- 📊 Automatic backend integration
+- 📊 Automatic backend integration with CarpetAI's Analytics Agent
 - 🔄 Session persistence across page reloads
 - 📦 Framework agnostic (works with any React setup)
 
@@ -45,7 +45,7 @@ function App() {
     <div>
       <h1>My App</h1>
       <SessionRecorder 
-        apiKey="your-api-key"
+        apiKey="your-carpetai-api-key"
       />
     </div>
   );
@@ -59,7 +59,7 @@ import { useSessionRecorder } from '@carpetai/rrweb-recorder';
 
 function MyComponent() {
   const { isRecording, sessionId, startRecording, stopRecording } = useSessionRecorder({
-    apiKey: "your-api-key"
+    apiKey: "your-carpetai-api-key"
   });
 
   return (
@@ -84,8 +84,8 @@ The main React component for automatic session recording.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `autoStart` | `boolean` | `true` | Whether to start recording automatically |
-| `apiKey` | `string` | - | API key for backend authentication |
-| `apiUrl` | `string` | `process.env.NEXT_PUBLIC_API_URL` | Custom API endpoint |
+| `apiKey` | `string` | - | CarpetAI API key for authentication |
+| `apiUrl` | `string` | `CarpetAI default endpoint` | Custom API endpoint (optional) |
 | `maxSessionDuration` | `number` | `30 * 60 * 1000` | Maximum session duration in milliseconds (30 minutes) |
 | `maxEventsPerSession` | `number` | `10000` | Maximum events before forcing a new session |
 | `saveInterval` | `number` | `5000` | How often to save events (5 seconds) |
@@ -99,7 +99,7 @@ The main React component for automatic session recording.
 
 ### useSessionRecorder Hook
 
-A React hook that provides more control over the recording process.
+A React hook that provides session recording state and control functions.
 
 #### Returns
 
@@ -109,7 +109,8 @@ A React hook that provides more control over the recording process.
 | `sessionId` | `string \| null` | Current session ID |
 | `startRecording` | `() => void` | Function to start recording |
 | `stopRecording` | `() => void` | Function to stop recording |
-| `saveEvents` | `() => void` | Function to manually save current events |
+
+**Note**: The hook automatically manages recording lifecycle when `autoStart` is true, but you can also control it manually using the provided functions.
 
 ## Advanced Usage
 
@@ -121,9 +122,25 @@ import { SessionRecorder } from '@carpetai/rrweb-recorder';
 function App() {
   return (
     <SessionRecorder 
-      apiKey={process.env.NEXT_PUBLIC_SESSION_API_KEY}
+      apiKey={process.env.NEXT_PUBLIC_CARPETAI_API_KEY}
       excludePaths={['/admin', '/private']}
       maxSessionDuration={15 * 60 * 1000} // 15 minutes
+    />
+  );
+}
+```
+
+### Custom API Endpoint
+
+```tsx
+import { SessionRecorder } from '@carpetai/rrweb-recorder';
+
+function App() {
+  return (
+    <SessionRecorder 
+      apiKey="your-carpetai-api-key"
+      apiUrl="https://your-custom-endpoint.com/api/sessions"
+      excludePaths={['/admin']}
     />
   );
 }
@@ -135,9 +152,9 @@ function App() {
 import { useSessionRecorder } from '@carpetai/rrweb-recorder';
 
 function MyApp() {
-  const { isRecording, startRecording, stopRecording } = useSessionRecorder({
+  const { isRecording, sessionId, startRecording, stopRecording } = useSessionRecorder({
     autoStart: false, // Don't start automatically
-    apiKey: "your-api-key"
+    apiKey: "your-carpetai-api-key"
   });
 
   const handleUserConsent = () => {
@@ -153,7 +170,33 @@ function MyApp() {
       <button onClick={handleUserConsent}>
         {isRecording ? 'Stop Recording' : 'Start Recording'}
       </button>
+      {isRecording && <p>Session ID: {sessionId}</p>}
     </div>
+  );
+}
+```
+
+### Next.js Integration
+
+```tsx
+// app/layout.tsx
+import { SessionRecorder } from '@carpetai/rrweb-recorder';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <SessionRecorder 
+          apiKey={process.env.NEXT_PUBLIC_CARPETAI_API_KEY}
+          excludePaths={['/session-replays']}
+        />
+      </body>
+    </html>
   );
 }
 ```
@@ -188,7 +231,7 @@ interface SessionEvent {
 - **Event Count Limit**: Stops recording if too many events are captured
 - **Path Exclusions**: Skip recording on specific paths
 - **Error Handling**: Graceful error handling with optional callbacks
-- **Automatic Backend Integration**: Sends data to your backend automatically
+- **Automatic Backend Integration**: Sends data to CarpetAI's Analytics Agent automatically
 
 ## Browser Support
 

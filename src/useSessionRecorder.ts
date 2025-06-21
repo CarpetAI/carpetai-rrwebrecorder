@@ -174,5 +174,7 @@ export function useSessionRecorder({
   return {
     isRecording,
     sessionId: sessionIdRef.current,
+    startRecording,
+    stopRecording
   };
 } 
