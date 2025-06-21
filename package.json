@@ -49,5 +49,8 @@
   "homepage": "https://github.com/carpetai/rrweb-recorder#readme",
   "bugs": {
     "url": "https://github.com/carpetai/rrweb-recorder/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
