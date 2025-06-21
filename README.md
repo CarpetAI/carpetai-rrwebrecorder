@@ -122,8 +122,6 @@ function App() {
   return (
     <SessionRecorder 
       apiKey={process.env.NEXT_PUBLIC_CARPETAI_API_KEY}
-      excludePaths={['/admin', '/private']}
-      maxSessionDuration={15 * 60 * 1000} // 15 minutes
     />
   );
 }
@@ -139,7 +137,6 @@ function App() {
     <SessionRecorder 
       apiKey="your-carpetai-api-key"
       apiUrl="https://your-custom-endpoint.com/api/sessions"
-      excludePaths={['/admin']}
     />
   );
 }
@@ -192,7 +189,6 @@ export default function RootLayout({
         {children}
         <SessionRecorder 
           apiKey={process.env.NEXT_PUBLIC_CARPETAI_API_KEY}
-          excludePaths={['/session-replays']}
         />
       </body>
     </html>
@@ -219,7 +215,7 @@ interface SessionData {
 interface SessionEvent {
   type: number;
   timestamp: number;
-  data: any;
+  data: Record<string, unknown>;
   delay?: number;
 }
 ```
