@@ -19,7 +19,6 @@ export interface SessionRecorderProps {
   apiKey: string;
   apiUrl?: string;
   maxSessionDuration?: number;
-  maxEventsPerSession?: number;
   saveInterval?: number;
   excludePaths?: string[];
   recordCanvas?: boolean;

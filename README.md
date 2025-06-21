@@ -87,7 +87,6 @@ The main React component for automatic session recording.
 | `apiKey` | `string` | - | CarpetAI API key for authentication |
 | `apiUrl` | `string` | `CarpetAI default endpoint` | Custom API endpoint (optional) |
 | `maxSessionDuration` | `number` | `30 * 60 * 1000` | Maximum session duration in milliseconds (30 minutes) |
-| `maxEventsPerSession` | `number` | `10000` | Maximum events before forcing a new session |
 | `saveInterval` | `number` | `5000` | How often to save events (5 seconds) |
 | `excludePaths` | `string[]` | `[]` | Paths to exclude from recording |
 | `recordCanvas` | `boolean` | `false` | Whether to record canvas elements |
@@ -228,7 +227,6 @@ interface SessionEvent {
 ## Safety Features
 
 - **Session Duration Limit**: Automatically stops recording after a configurable duration
-- **Event Count Limit**: Stops recording if too many events are captured
 - **Path Exclusions**: Skip recording on specific paths
 - **Error Handling**: Graceful error handling with optional callbacks
 - **Automatic Backend Integration**: Sends data to CarpetAI's Analytics Agent automatically
