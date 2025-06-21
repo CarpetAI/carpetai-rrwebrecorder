@@ -1,0 +1,53 @@
+{
+  "name": "@carpetai/rrweb-recorder",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A React component for recording user sessions using rrweb. Meant to be used with CarpetAI's Analytics Agent.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "rrweb": "^2.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^24.0.3",
+    "@types/react": "^18.0.0",
+    "rimraf": "^5.0.0",
+    "rollup": "^3.0.0",
+    "rollup-plugin-dts": "^5.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "rrweb",
+    "session-recording",
+    "react",
+    "user-analytics",
+    "session-replay"
+  ],
+  "author": "CarpetAI",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carpetai/rrweb-recorder.git"
+  },
+  "homepage": "https://github.com/carpetai/rrweb-recorder#readme",
+  "bugs": {
+    "url": "https://github.com/carpetai/rrweb-recorder/issues"
+  }
+}
