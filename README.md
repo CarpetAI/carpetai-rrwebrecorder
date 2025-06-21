@@ -31,7 +31,7 @@ npm install @carpetai/rrweb-recorder-nextjs
 yarn add @carpetai/rrweb-recorder-nextjs
 ```
 
-This eliminates the need for `'use client'` wrapper components. See [@carpetai/rrweb-recorder-nextjs](https://github.com/carpetai/rrweb-recorder/tree/main/packages/carpetai-nextjs) for more details.
+This eliminates the need for `'use client'` wrapper components. See [@carpetai/rrweb-recorder-nextjs](https://github.com/CarpetAI/carpetai-rrwebrecorder-nextjs) for more details.
 
 ## Quick Start
 
@@ -113,20 +113,6 @@ A React hook that provides session recording state and control functions.
 
 ## Advanced Usage
 
-### Environment Variables
-
-```tsx
-import { SessionRecorder } from '@carpetai/rrweb-recorder';
-
-function App() {
-  return (
-    <SessionRecorder 
-      apiKey={process.env.NEXT_PUBLIC_CARPETAI_API_KEY}
-    />
-  );
-}
-```
-
 ### Custom API Endpoint
 
 ```tsx
@@ -168,30 +154,6 @@ function MyApp() {
       </button>
       {isRecording && <p>Session ID: {sessionId}</p>}
     </div>
-  );
-}
-```
-
-### Next.js Integration
-
-```tsx
-// app/layout.tsx
-import { SessionRecorder } from '@carpetai/rrweb-recorder';
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body>
-        {children}
-        <SessionRecorder 
-          apiKey={process.env.NEXT_PUBLIC_CARPETAI_API_KEY}
-        />
-      </body>
-    </html>
   );
 }
 ```
