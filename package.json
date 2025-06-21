@@ -44,11 +44,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/carpetai/rrweb-recorder.git"
+    "url": "https://github.com/CarpetAI/carpetai-rrwebrecorder"
   },
-  "homepage": "https://github.com/carpetai/rrweb-recorder#readme",
+  "homepage": "https://github.com/CarpetAI/carpetai-rrwebrecorder#readme",
   "bugs": {
-    "url": "https://github.com/carpetai/rrweb-recorder/issues"
+    "url": "https://github.com/CarpetAI/carpetai-rrwebrecorder/issues"
   },
   "publishConfig": {
     "access": "public"
