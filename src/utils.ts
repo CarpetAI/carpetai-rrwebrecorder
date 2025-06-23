@@ -43,8 +43,8 @@ export const getOrCreateSessionId = (providedSessionId?: string): string => {
 export const shouldExcludePath = (excludePaths?: string[]): boolean => {
   if (!excludePaths || typeof window === 'undefined') return false;
   
-  const currentPath = window.location.pathname;
-  return excludePaths.some(path => currentPath.startsWith(path));
+  const currentUrl = window.location.href;
+  return excludePaths.some(path => currentUrl.startsWith(path));
 };
 
 export const createMetaEvent = () => {

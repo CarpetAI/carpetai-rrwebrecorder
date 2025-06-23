@@ -19,7 +19,7 @@ export function useSessionRecorder({
   apiUrl = "https://apt-agent-api-c5f32b392702.herokuapp.com/api/sessions",
   maxSessionDuration = 30 * 60 * 1000,
   saveInterval = 5000,
-  excludePaths = [],
+  excludePaths = ['http://localhost', 'https://localhost', 'http://127.0.0.1', 'https://127.0.0.1'],
   recordCanvas = false,
   recordCrossOriginIframes = false,
   sessionId: customSessionId,
