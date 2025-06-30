@@ -8,7 +8,7 @@ A React component and hook for recording user sessions using [rrweb](https://git
 - 🔧 Flexible configuration for recording behavior
 - 📱 React hook for custom implementations
 - 🛡️ Built-in safety limits to prevent runaway recordings
-- 🎯 Path-based exclusions
+- 🎯 Path-based exclusions (localhost excluded by default)
 - 📊 Automatic backend integration with CarpetAI's Analytics Agent
 - 🔄 Session persistence across page reloads
 - 📦 Framework agnostic (works with any React setup)
@@ -52,6 +52,47 @@ function App() {
 }
 ```
 
+### Recording on Localhost
+
+By default, the recorder excludes localhost URLs. To enable recording on localhost, set `excludePaths` to an empty array or customize the exclusions:
+
+```tsx
+import { SessionRecorder } from '@carpetai/rrweb-recorder';
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <SessionRecorder 
+        apiKey="your-carpetai-api-key"
+        excludePaths={[]} // Enable recording on localhost
+      />
+    </div>
+  );
+}
+```
+
+### Custom Path Exclusions
+
+```tsx
+import { SessionRecorder } from '@carpetai/rrweb-recorder';
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <SessionRecorder 
+        apiKey="your-carpetai-api-key"
+        excludePaths={[
+          'https://admin.example.com', // Exclude admin panel
+          'https://example.com/private' // Exclude private pages
+        ]}
+      />
+    </div>
+  );
+}
+```
+
 ### Using the Hook
 
 ```tsx
@@ -88,7 +129,7 @@ The main React component for automatic session recording.
 | `apiUrl` | `string` | `CarpetAI default endpoint` | Custom API endpoint (optional) |
 | `maxSessionDuration` | `number` | `30 * 60 * 1000` | Maximum session duration in milliseconds (30 minutes) |
 | `saveInterval` | `number` | `5000` | How often to save events (5 seconds) |
-| `excludePaths` | `string[]` | `[]` | Paths to exclude from recording |
+| `excludePaths` | `string[]` | `['http://localhost', 'https://localhost', 'http://127.0.0.1', 'https://127.0.0.1']` | Paths to exclude from recording (localhost excluded by default) |
 | `recordCanvas` | `boolean` | `false` | Whether to record canvas elements |
 | `recordCrossOriginIframes` | `boolean` | `false` | Whether to record cross-origin iframes |
 | `sessionId` | `string` | `auto-generated` | Custom session ID |
