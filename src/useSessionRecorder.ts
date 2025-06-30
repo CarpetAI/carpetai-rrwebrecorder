@@ -51,7 +51,6 @@ export function useSessionRecorder({
         sessionId: currentSessionId,
         events: newEvents,
         timestamp: Date.now(),
-        url: window.location.href
       };
 
       if (apiKey) {

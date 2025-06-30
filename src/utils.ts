@@ -12,9 +12,11 @@ export const defaultSaveSessionData = async (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
       },
-      body: JSON.stringify(sessionData)
+      body: JSON.stringify({
+        ...sessionData,
+        apiKey
+      })
     });
 
     if (!response.ok) {
