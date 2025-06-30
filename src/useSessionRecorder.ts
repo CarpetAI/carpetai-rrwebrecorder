@@ -16,7 +16,7 @@ import {
 export function useSessionRecorder({
   autoStart = true,
   apiKey,
-  apiUrl = "https://apt-agent-api-c5f32b392702.herokuapp.com/api/sessions",
+  apiUrl = "https://carpet-engine-437efa6609f6.herokuapp.com/api/session-events",
   maxSessionDuration = 30 * 60 * 1000,
   saveInterval = 5000,
   excludePaths = ['http://localhost', 'https://localhost', 'http://127.0.0.1', 'https://127.0.0.1'],
