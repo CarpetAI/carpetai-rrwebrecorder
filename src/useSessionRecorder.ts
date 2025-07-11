@@ -1,4 +1,4 @@
-import { record } from 'rrweb';
+import { mirror, record } from 'rrweb';
 import { useEffect, useRef, useState } from 'react';
 import {
   SessionEvent,
@@ -22,10 +22,10 @@ export function useSessionRecorder({
   excludePaths = ['http://localhost', 'https://localhost', 'http://127.0.0.1', 'https://127.0.0.1'],
   recordCanvas = false,
   recordCrossOriginIframes = false,
-  sessionId: customSessionId,
   onSessionStart,
   onSessionStop,
-  onError
+  onError,
+  maskAllInputs = false,
 }: SessionRecorderProps): SessionRecorderHookReturn {
   const [isRecording, setIsRecording] = useState(false);
   const sessionIdRef = useRef<string | null>(null);
@@ -75,7 +75,7 @@ export function useSessionRecorder({
   const startRecording = () => {
     if (isRecording || typeof window === 'undefined') return;
 
-    const currentSessionId = customSessionId || getOrCreateSessionId();
+    const currentSessionId = getOrCreateSessionId();
     sessionIdRef.current = currentSessionId;
     sessionStartTimeRef.current = Date.now();
     lastSavedIndexRef.current = 0;
@@ -85,7 +85,8 @@ export function useSessionRecorder({
       recorderRef.current = record({
         emit,
         recordCanvas,
-        recordCrossOriginIframes
+        recordCrossOriginIframes,
+        maskAllInputs,
       });
 
       setIsRecording(true);

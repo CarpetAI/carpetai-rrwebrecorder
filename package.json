@@ -1,6 +1,6 @@
 {
   "name": "@carpetai/rrweb-recorder",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "type": "module",
   "description": "A React component for recording user sessions using rrweb. Meant to be used with CarpetAI's Analytics Agent.",
   "main": "dist/index.js",

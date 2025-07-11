@@ -132,10 +132,11 @@ The main React component for automatic session recording.
 | `excludePaths` | `string[]` | `['http://localhost', 'https://localhost', 'http://127.0.0.1', 'https://127.0.0.1']` | Paths to exclude from recording (localhost excluded by default) |
 | `recordCanvas` | `boolean` | `false` | Whether to record canvas elements |
 | `recordCrossOriginIframes` | `boolean` | `false` | Whether to record cross-origin iframes |
-| `sessionId` | `string` | `auto-generated` | Custom session ID |
 | `onSessionStart` | `(sessionId: string) => void` | - | Callback when recording starts |
 | `onSessionStop` | `(sessionId: string) => void` | - | Callback when recording stops |
 | `onError` | `(error: Error) => void` | - | Error handler |
+| `maskAllInputs` | `boolean` | `false` | Whether to mask all input elements for privacy |
+
 
 ### useSessionRecorder Hook
 

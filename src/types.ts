@@ -21,10 +21,10 @@ export interface SessionRecorderProps {
   excludePaths?: string[];
   recordCanvas?: boolean;
   recordCrossOriginIframes?: boolean;
-  sessionId?: string;
   onSessionStart?: (sessionId: string) => void;
   onSessionStop?: (sessionId: string) => void;
   onError?: (error: Error) => void;
+  maskAllInputs?: boolean;
 }
 
 export interface SessionRecorderHookReturn {
