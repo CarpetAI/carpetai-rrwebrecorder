@@ -18,17 +18,21 @@ export default [
         sourcemap: true,
       },
     ],
-    external: ['react', 'react-dom', 'rrweb'],
+    external: ['react', 'react-dom', 'rrweb', 'react/jsx-runtime'],
     plugins: [
-      resolve(),
-      commonjs(),
+      resolve({
+        preferBuiltins: true,
+      }),
+      commonjs({
+        include: /node_modules/,
+      }),
       typescript({ tsconfig: './tsconfig.json' }),
     ],
   },
   {
     input: 'src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: ['react', 'react-dom', 'rrweb'],
+    external: ['react', 'react-dom', 'rrweb', 'react/jsx-runtime'],
     plugins: [dts()],
   },
 ]; 
