@@ -35,6 +35,12 @@ This eliminates the need for `'use client'` wrapper components. See [@carpetai/r
 
 ## Quick Start
 
+### Demo
+
+Watch a quick demo of the Session Recorder in action:
+
+[![Session Recorder Demo](https://img.youtube.com/vi/ZXLdtYngS7A/0.jpg)](https://youtu.be/ZXLdtYngS7A)
+
 ### Basic Usage
 
 ```tsx
